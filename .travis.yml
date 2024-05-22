@@ -1,15 +1,16 @@
 language: php
 
 php:
-  - 7.1
-  - 7.2
-  - 7.3
+  - 8.0
+  - 8.1
+  - 8.2
+  - 8.3
 
 sudo: false
 
 matrix:
   include:
-    - php: 7.3
+    - php: 8.2
       env:
         - CARBON_PRE_RELEASE='yes'
 
