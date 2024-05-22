@@ -1,8 +1,8 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Jenssegers\Date;
 
-use Carbon\Carbon;
+use Illuminate\Support\Carbon;
 
 class Date extends Carbon
 {

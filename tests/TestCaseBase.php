@@ -1,8 +1,8 @@
-<?php
+<?php declare(strip_tags=1);
 
 namespace Tests\Jenssegers;
 
-use Carbon\Carbon;
+use Illuminate\Support\Carbon;
 use PHPUnit\Framework\TestCase;
 
 class TestCaseBase extends TestCase
