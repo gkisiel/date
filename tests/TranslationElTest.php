@@ -13,7 +13,7 @@ class TranslationElTest extends TestCaseBase
         $date = new Date(1403619368);
         $date = $date->sub('-100 days -3 hours -20 minutes');
 
-        $this->assertSame('3 μήνες, 1 εβδομάδα, 1 μέρα, 3 ώρες, 20 λεπτά', $date->timespan(1403619368));
+        $this->assertSame('3 μήνες, 1 εβδομάδα, 1 μέρα, 3 ώρες, 20 λεπτά', $date->timespan(Date::createFromTimestamp(1403619368)));
     }
 
     public function testCreateFromFormat()

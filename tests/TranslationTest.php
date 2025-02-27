@@ -74,7 +74,7 @@ class TranslationTest extends TestCaseBase
         $date = new Date(1403619368);
         $date = $date->sub('-100 days -3 hours -20 minutes');
 
-        $this->assertSame('3 maanden, 1 week, 1 dag, 3 uur, 20 minuten', $date->timespan(1403619368));
+        $this->assertSame('3 maanden, 1 week, 1 dag, 3 uur, 20 minuten', $date->timespan(Date::createFromTimestamp(1403619368)));
     }
 
     public function testParse()
