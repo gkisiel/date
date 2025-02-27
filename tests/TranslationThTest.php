@@ -13,7 +13,7 @@ class TranslationThTest extends TestCaseBase
         $date = new Date(1403619368);
         $date = $date->sub('-100 days -3 hours -20 minutes');
 
-        $this->assertSame('3 เดือน, 1 สัปดาห์, 1 วัน, 3 ชั่วโมง, 20 นาที', $date->timespan(1403619368));
+        $this->assertSame('3 เดือน, 1 สัปดาห์, 1 วัน, 3 ชั่วโมง, 20 นาที', $date->timespan(Date::createFromTimestamp(1403619368)));
     }
 
     public function testCreateFromFormat()
