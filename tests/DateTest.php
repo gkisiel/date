@@ -2,6 +2,7 @@
 
 namespace Tests\Jenssegers;
 
+use DateInterval;
 use Jenssegers\Date\Date;
 
 class DateTest extends TestCaseBase
@@ -65,17 +66,17 @@ class DateTest extends TestCaseBase
     {
         $now = Date::now();
 
-        $this->assertInstanceOf(Date::class, $now->copy()->add('1 day'));
-        $this->assertInstanceOf(Date::class, $now->copy()->sub('1 day'));
+        $this->assertInstanceOf(Date::class, $now->copy()->add(DateInterval::createFromDateString('1 day')));
+        $this->assertInstanceOf(Date::class, $now->copy()->sub(DateInterval::createFromDateString('1 day')));
 
-        $this->assertSame(86400, $now->copy()->add('1 day')->getTimestamp() - $now->getTimestamp());
-        $this->assertSame(4 * 86400, $now->copy()->add('4 day')->getTimestamp() - $now->getTimestamp());
+        $this->assertSame(86400, $now->copy()->add(DateInterval::createFromDateString('1 day'))->getTimestamp() - $now->getTimestamp());
+        $this->assertSame(4 * 86400, $now->copy()->add(DateInterval::createFromDateString('4 day'))->getTimestamp() - $now->getTimestamp());
 
-        $this->assertSame(-86400, $now->copy()->sub('1 day')->getTimestamp() - $now->getTimestamp());
-        $this->assertSame(-4 * 86400, $now->copy()->sub('4 day')->getTimestamp() - $now->getTimestamp());
+        $this->assertSame(-86400, $now->copy()->sub(DateInterval::createFromDateString('1 day'))->getTimestamp() - $now->getTimestamp());
+        $this->assertSame(-4 * 86400, $now->copy()->sub(DateInterval::createFromDateString('4 day'))->getTimestamp() - $now->getTimestamp());
 
-        $this->assertSame(10 * 86400, $now->copy()->add('P10D')->getTimestamp() - $now->getTimestamp());
-        $this->assertSame(-10 * 86400, $now->copy()->sub('P10D')->getTimestamp() - $now->getTimestamp());
+        $this->assertSame(10 * 86400, $now->copy()->add(new DateInterval('P10D'))->getTimestamp() - $now->getTimestamp());
+        $this->assertSame(-10 * 86400, $now->copy()->sub(new DateInterval('P10D'))->getTimestamp() - $now->getTimestamp());
     }
 
     public function testFormat()
@@ -170,7 +171,7 @@ class DateTest extends TestCaseBase
     public function testTimespan()
     {
         $date = new Date(1403619368);
-        $date = $date->sub('-100 days -3 hours -20 minutes');
+        $date = $date->sub(DateInterval::createFromDateString('-100 days -3 hours -20 minutes'));
 
         $this->assertSame('3 months, 1 week, 1 day, 3 hours, 20 minutes', $date->timespan(1403619368));
     }
